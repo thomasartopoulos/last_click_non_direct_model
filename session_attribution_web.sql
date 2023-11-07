@@ -81,6 +81,6 @@ SELECT
 CONCAT(attribution.source,' / ', attribution.medium) AS source_medium,
 COUNT(DISTINCT(real_session_id)) AS session_count,
 FROM t3
-where event_date=today_date
+WHERE event_date=today_date
 GROUP BY 1
 ORDER BY session_count desc
