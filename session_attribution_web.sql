@@ -18,7 +18,7 @@ ROW_NUMBER() OVER (PARTITION BY user_pseudo_id ORDER BY event_timestamp) AS even
    (select value.string_value from unnest(event_params) where key = 'medium') as medium,
    (select value.string_value from unnest(event_params) where key = 'campaign') as campaign,
    (select value.string_value from unnest(event_params) where key = 'gclid') as gclid) as traffic_source,
-FROM `falabella-prod.analytics_175079171.events_*`
+FROM `TABLE.events_*`
 WHERE regexp_extract(_table_suffix,'[0-9]+') between FORMAT_DATE("%Y%m%d", DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)) -- cambiamos fecha
 AND today_date
 AND stream_id='' -- Filter by Web Stream
